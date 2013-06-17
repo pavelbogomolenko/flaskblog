@@ -1,0 +1,5 @@
+<ul class="nav">
+  <li><a href="#about">About me</a></li>
+  <li {% if request.endpoint == 'fe.tags' %}class="active"{% endif %}><a href="{{ url_for('.tags') }}">All tags</a></li>
+  <!-- <li><a href="#contact">Archive</a></li> -->
+</ul>

@@ -1,0 +1,12 @@
+{% extends "fe/layout.html" %}
+{% block content %}
+  <h1>All tags</h1>
+
+  <ul class="tag_cloud">
+    {% for tag in tags %}
+    <li><a href="{{ url_for('.index', tag=tag.Tag.title) }}"
+      style="font-size: {{ ((max_weight * (tag.tag_weight - min_weight)) / (max_weight - min_weight)) + 1 }}em;">
+      {{ tag.Tag.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

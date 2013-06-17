@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <meta charset="utf-8">
+    <title>Blog template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Pavel Bogmolenko">
+
+    <!-- Le styles -->
+    <link href="{{ url_for('static', filename='assets/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/css/bootstrap-responsive.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/css/prettify.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/css/sunburst.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/css/jquery.jscrollpane.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/css/layout.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/css/elements.css') }}" rel="stylesheet">
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
+    {% endblock %}
+    <script type="text/javascript">
+      window.onload = function(){
+        //init prettify
+        prettyPrint();
+        //init twitter plugin
+        $('#twitter_timeline').twitterTimeline();
+      };
+    </script>
+  </head>
+
+  <body>
+
+    <div class="navbar-wrapper">
+      <div class="container">
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <a class="brand" href="/">Pavel Bogomolenko's blog</a>
+            <div class="nav-collapse collapse">
+              {% include 'fe/partials/top_menu.html' %}
+            </div>
+            <div class="right">
+              {% include 'fe/partials/search.html' %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="container-wrapper">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span6 offset2">
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+          </div>
+          <div class="span2">
+            <div class="well sidebar-nav">
+              {% include 'fe/partials/right_menu.html' %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      {% include 'fe/partials/footer.html' %}
+    </div>
+    <!-- js includes -->
+    <script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery-1.9.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='assets/js/prettify.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.jscrollpane.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='assets/js/twitter.js') }}"></script>
+    <!-- end js includes -->
+  </body>
+</html>

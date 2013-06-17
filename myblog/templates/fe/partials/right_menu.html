@@ -1,0 +1,15 @@
+<ul class="nav nav-list">
+  <li class="nav-header">Main Tags</li>
+  {% for tag in popular_tags %}
+  <li {% if request.view_args.tag == tag.Tag.title %}class="active"{% endif %}><a href="{{ url_for('.index', tag=tag.Tag.title) }}">{{ tag.Tag.title }}</a></li>
+  {% endfor %}
+  <li {% if request.endpoint == 'fe.tags' %}class="active"{% endif %}><a href="{{ url_for('.tags') }}">All tags</a></li>
+
+  <!-- <li class="nav-header">Archive</li> -->
+  <!-- <li><a href="">2012</a></li> -->
+
+  <li class="nav-header">Latest Tweets</li>
+  <li>
+    <div id="twitter_timeline"></div>
+  </li>
+</ul>
